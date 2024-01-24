@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "shopbanhang-a1f4b": {
+      "hosting": {
+        "untitled": [
+          "shopbanhang-a1f4b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "shopbanhang-a1f4b"
+  }
+}

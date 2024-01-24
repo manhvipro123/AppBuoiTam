@@ -1,0 +1,29 @@
+@for ( item of fbService.prodList;track item){
+  <tui-island>
+    <p class="tui-island__category">{{item['first']}}</p>
+    <h3 class="tui-island__title">{{item['last']}}</h3>
+    <p class="tui-island__paragraph">
+      {{item['born']}}
+    </p>
+    <p class="tui-island__paragraph tui-island__paragraph_link">
+      <button
+        tuiButton
+        type="button"
+        class="tui-space_right-3 tui-space_bottom-3"
+        (click)="update(item)"
+        [size]="'s'"
+      >
+        Update
+      </button>
+      <button
+        tuiButton
+        type="button"
+        class="tui-space_right-3 tui-space_bottom-3"
+        (click)="delete(item)"
+        [size]="'s'"
+      >
+        Delete
+      </button>
+    </p>
+  </tui-island>
+}

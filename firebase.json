@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "untitled",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
