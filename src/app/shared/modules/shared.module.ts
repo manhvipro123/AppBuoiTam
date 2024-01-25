@@ -28,6 +28,7 @@ import { TuiSliderModule } from '@taiga-ui/kit';
 import { TuiScrollbarModule } from '@taiga-ui/core';
 import { NgOptimizedImage } from '@angular/common';
 import { TuiDialogModule } from '@taiga-ui/core';
+import { TuiLabelModule } from '@taiga-ui/core';
 
 const TaigaModules = [
   TuiIslandModule,
@@ -55,6 +56,7 @@ const TaigaModules = [
   TuiSliderModule,
   TuiScrollbarModule,
   TuiDialogModule,
+  TuiLabelModule,
 ];
 
 @NgModule({
