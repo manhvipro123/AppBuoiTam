@@ -1,0 +1,63 @@
+<div id="login-container">
+  <div id="left-side">
+    <div class="image-box">
+      <img ngSrc="../../assets/images/beauty.jpg" priority fill />
+    </div>
+  </div>
+  <div id="right-side">
+    <tui-scrollbar class="scrollbar">
+      <div
+        style="
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <form
+          [formGroup]="testForm"
+          class="tui-row tui-row_sme"
+          (ngSubmit)="login()"
+        >
+          <div class="tui-col_12">
+            <h3 class="tui-form__header tui-form__header_margin-top_none">
+              WELCOME - PLEASE LOGIN
+            </h3>
+            <div class="tui-form__row">
+              <tui-input formControlName="nameValue" tuiHintContent="A tooltip">
+                Username
+                <input placeholder="Enter username" tuiTextfield />
+                <span class="tui-required"></span>
+              </tui-input>
+              <tui-error
+                formControlName="nameValue"
+                [error]="[] | tuiFieldError | async"
+              ></tui-error>
+            </div>
+            <div class="tui-form__row">
+              <tui-input-password formControlName="passwordValue"
+                >Password</tui-input-password
+              >
+              <tui-error
+                formControlName="passwordValue"
+                [error]="[] | tuiFieldError | async"
+              ></tui-error>
+            </div>
+            <div class="tui-form__buttons tui-form__buttons_align_end">
+              <button
+                size="m"
+                tuiButton
+                type="submit"
+                class="tui-form__button"
+                [disabled]="this.testForm.invalid"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </tui-scrollbar>
+  </div>
+</div>

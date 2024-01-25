@@ -1,16 +1,17 @@
-@for ( item of fbService.prodList;track item){
+<div class="product-list-container">
+  @for ( item of fbService.prodList;track item){
   <tui-island>
-    <p class="tui-island__category">{{item['first']}}</p>
-    <h3 class="tui-island__title">{{item['last']}}</h3>
+    <p class="tui-island__category">{{ item["first"] }}</p>
+    <h3 class="tui-island__title">{{ item["last"] }}</h3>
     <p class="tui-island__paragraph">
-      {{item['born']}}
+      {{ item["born"] }}
     </p>
     <p class="tui-island__paragraph tui-island__paragraph_link">
       <button
         tuiButton
         type="button"
         class="tui-space_right-3 tui-space_bottom-3"
-        (click)="update(item)"
+        (click)="this.showUpdateDialog(item)"
         [size]="'s'"
       >
         Update
@@ -21,9 +22,28 @@
         class="tui-space_right-3 tui-space_bottom-3"
         (click)="delete(item)"
         [size]="'s'"
+        appearance="accent"
       >
         Delete
       </button>
     </p>
   </tui-island>
-}
+  }
+</div>
+
+<ng-template
+  [tuiDialogOptions]="{ label: 'Update Item', size: 's' }"
+  [(tuiDialog)]="this.openUpdateDialog"
+>
+  <form [formGroup]="updateForm" (ngSubmit)="update()">
+    <p><tui-input formControlName="id"> </tui-input></p>
+    <p><tui-input formControlName="first"> </tui-input></p>
+    <p><tui-input formControlName="last"> </tui-input></p>
+    <p><tui-input formControlName="born"> </tui-input></p>
+    <p>
+      <button tuiButton type="submit" [disabled]="this.updateForm.invalid">
+        Update
+      </button>
+    </p>
+  </form>
+</ng-template>
