@@ -4,6 +4,7 @@ import { TuiCurrency } from '@taiga-ui/addon-commerce';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiDay, TuiTime } from '@taiga-ui/cdk';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 class User {
   constructor(readonly firstName: string, readonly lastName: string) {}
 
@@ -29,7 +30,7 @@ class Account {
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router,private authService:AuthService) {}
 
   ngOnInit(): void {}
 
@@ -39,6 +40,11 @@ export class LoginComponent implements OnInit {
   });
 
   login() {
+
     this.router.navigate(['/base']);
+  }
+
+  signInWithGg(){
+    this.authService.signInWithGg()
   }
 }

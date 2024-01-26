@@ -19,7 +19,7 @@ export class FirebaseService {
   prodList: DocumentData[] = [];
   constructor(private firestore: Firestore) {
     // this.getAll().then();
-    onSnapshot(collection(this.firestore, 'users'), (collection) => {
+    onSnapshot(collection(this.firestore, 'products'), (collection) => {
       this.prodList = [];
       collection.forEach((doc) => {
         this.prodList.push(doc.data() as any);
@@ -30,7 +30,7 @@ export class FirebaseService {
   async add() {
     try {
       let id = Math.floor(Math.random() * 1000).toString();
-      const docRef = await setDoc(doc(this.firestore, 'users', id), {
+      const docRef = await setDoc(doc(this.firestore, 'products', id), {
         first: 'Ada',
         last: 'Lovelace',
         born: 1815,
@@ -43,10 +43,10 @@ export class FirebaseService {
   }
 
   async update(item: DocumentData) {
-    await updateDoc(doc(this.firestore, 'users', item['id']), item);
+    await updateDoc(doc(this.firestore, 'products', item['id']), item);
   }
 
   async delete(item: DocumentData) {
-    await deleteDoc(doc(this.firestore, 'users', item['id']));
+    await deleteDoc(doc(this.firestore, 'products', item['id']));
   }
 }

@@ -6,9 +6,10 @@ import {
   TUI_SANITIZER,
 } from '@taiga-ui/core';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { SharedModule } from './shared/modules/shared.module';
-
+import { onAuthStateChanged } from '@angular/fire/auth';
+import { Auth} from '@angular/fire/auth';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -19,4 +20,21 @@ import { SharedModule } from './shared/modules/shared.module';
 })
 export class AppComponent {
   title = 'FirebaseApp';
+  constructor(private auth : Auth,private router:Router) {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        // ...
+        this.router.navigate(['/base']);
+        console.log(user)
+      } else {
+        // User is signed out
+        // ..."
+        this.router.navigate(['/login']);
+        console.log("no user")
+      }
+    });
+  }
 }

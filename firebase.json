@@ -4,6 +4,11 @@
       "target": "untitled",
       "source": ".",
       "frameworksBackend": {}
+    },
+    {
+      "target": "appbuoitam",
+      "source": ".",
+      "frameworksBackend": {}
     }
   ]
 }

@@ -18,7 +18,6 @@
         <form
           [formGroup]="testForm"
           class="tui-row tui-row_sme"
-          (ngSubmit)="login()"
         >
           <div class="tui-col_12">
             <h3 class="tui-form__header tui-form__header_margin-top_none">
@@ -51,8 +50,18 @@
                 type="submit"
                 class="tui-form__button"
                 [disabled]="this.testForm.invalid"
+                (click)="login()"
               >
                 Login
+              </button>
+              <button
+                size="m"
+                tuiButton
+                type="submit"
+                class="tui-form__button"
+                (click)="signInWithGg()"
+              >
+                Sign In With Gg
               </button>
             </div>
           </div>
