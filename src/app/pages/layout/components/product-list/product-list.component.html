@@ -1,0 +1,13 @@
+<tui-scrollbar style="height: 100%; width: 100%">
+  <div class="product-list-container">
+    @for ( item of productService.prodList;track item){
+    <tui-push [heading]="item['name']" type="Replicant">
+      <img alt="" [src]="item['image']" />
+      <tui-svg src="tuiIconSettingsLarge"></tui-svg>
+      <div>Price: {{ item["price"] }}</div>
+      <div>Quantity: {{ item["quantity"] }}</div>
+      <button tuiButton type="button" (click)="buy(item)">Buy</button>
+    </tui-push>
+    }
+  </div>
+</tui-scrollbar>

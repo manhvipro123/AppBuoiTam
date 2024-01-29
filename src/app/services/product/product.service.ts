@@ -1,24 +1,14 @@
 import { Injectable } from '@angular/core';
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  Firestore,
-  getDocs,
-  onSnapshot,
-  setDoc,
-  updateDoc,
-  DocumentData,
-} from '@angular/fire/firestore';
+import {DocumentData, Firestore, collection, deleteDoc, doc, onSnapshot, setDoc, updateDoc } from '@angular/fire/firestore';
+import { ProductModel } from '../../models/product.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class FirebaseService {
+export class ProductService {
   prodList: DocumentData[] = [];
+
   constructor(private firestore: Firestore) {
-    // this.getAll().then();
     onSnapshot(collection(this.firestore, 'products'), (collection) => {
       this.prodList = [];
       collection.forEach((doc) => {
@@ -27,15 +17,9 @@ export class FirebaseService {
     });
   }
 
-  async add() {
+  async add(product:ProductModel) {
     try {
-      let id = Math.floor(Math.random() * 1000).toString();
-      const docRef = await setDoc(doc(this.firestore, 'products', id), {
-        first: 'Ada',
-        last: 'Lovelace',
-        born: 1815,
-        id: id,
-      });
+      const docRef = await setDoc(doc(this.firestore, 'products', product.id),product);
       // console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error('Error adding document: ', e);

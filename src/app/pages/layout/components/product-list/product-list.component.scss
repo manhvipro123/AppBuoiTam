@@ -1,0 +1,33 @@
+.product-list-container {
+  // height: 100%;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .wrapper {
+    box-shadow: var(--tui-shadow);
+    width: 22.5rem;
+    max-width: 100%;
+    border-radius: var(--tui-radius-l);
+    margin-bottom: 1rem;
+  }
+
+  .push {
+    box-shadow: none;
+  }
+
+  .human {
+    color: var(--tui-positive);
+  }
+
+  img {
+    width: 360px;
+    height: 170px;
+    object-fit: scale-down;
+  }
+}
+:host {
+  display: block;
+}

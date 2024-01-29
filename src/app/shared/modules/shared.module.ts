@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { TuiIslandModule } from '@taiga-ui/kit';
 import { TuiLinkModule } from '@taiga-ui/core';
 import { TuiButtonModule } from '@taiga-ui/core';
@@ -29,6 +28,10 @@ import { TuiScrollbarModule } from '@taiga-ui/core';
 import { NgOptimizedImage } from '@angular/common';
 import { TuiDialogModule } from '@taiga-ui/core';
 import { TuiLabelModule } from '@taiga-ui/core';
+import { TuiTableModule } from '@taiga-ui/addon-table';
+import { TuiPushModule } from '@taiga-ui/kit';
+import { TuiSvgModule } from '@taiga-ui/core';
+import { AsyncPipe } from '@angular/common';
 
 const TaigaModules = [
   TuiIslandModule,
@@ -57,6 +60,9 @@ const TaigaModules = [
   TuiScrollbarModule,
   TuiDialogModule,
   TuiLabelModule,
+  TuiTableModule,
+  TuiPushModule,
+  TuiSvgModule,
 ];
 
 @NgModule({
@@ -67,8 +73,8 @@ const TaigaModules = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    NavbarComponent,
     ...TaigaModules,
+    AsyncPipe,
   ],
   exports: [
     CommonModule,
@@ -76,8 +82,8 @@ const TaigaModules = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    NavbarComponent,
     ...TaigaModules,
+    AsyncPipe,
   ],
 })
 export class SharedModule {}

@@ -8,19 +8,28 @@ import {
 import { Component } from '@angular/core';
 import { SharedModule } from './shared/modules/shared.module';
 import { onAuthStateChanged } from '@angular/fire/auth';
-import { Auth} from '@angular/fire/auth';
+import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { MyCounterComponent } from './components/my-counter/my-counter.component';
+import { HisCounterComponent } from './components/his-counter/his-counter.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SharedModule, TuiRootModule, TuiDialogModule, TuiAlertModule],
+  imports: [
+    SharedModule,
+    TuiRootModule,
+    TuiDialogModule,
+    TuiAlertModule,
+    MyCounterComponent,
+    HisCounterComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
 })
 export class AppComponent {
   title = 'FirebaseApp';
-  constructor(private auth : Auth,private router:Router) {
+  constructor(private auth: Auth, private router: Router) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
@@ -28,12 +37,12 @@ export class AppComponent {
         const uid = user.uid;
         // ...
         this.router.navigate(['/base']);
-        console.log(user)
+        console.log(user);
       } else {
         // User is signed out
         // ..."
         this.router.navigate(['/login']);
-        console.log("no user")
+        console.log('no user');
       }
     });
   }
