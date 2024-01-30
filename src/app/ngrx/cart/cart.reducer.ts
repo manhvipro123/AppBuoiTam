@@ -15,7 +15,7 @@ export const initialState: CartState = {
 export const cartReducer = createReducer(
   initialState,
   on(CartActions.addProduct, (state, action) => {
-    console.log(action.product);
+    // console.log(action.product);
     //make product list unique
     let productList = [...state.cart.productList];
     let product = action.product;
@@ -43,13 +43,17 @@ export const cartReducer = createReducer(
   on(CartActions.updateProduct, (state, action) => {
     let productList = [...state.cart.productList];
     let product = action.product;
-    productList.forEach((p) => {
+    console.log(product);
+    productList = productList.map((p) => {
       if (p.id === product.id) {
+        console.log('match');
         p = {
           ...p,
           quantity: product.quantity,
         };
+        return p;
       }
+      return p;
     });
     return {
       ...state,
@@ -64,6 +68,7 @@ export const cartReducer = createReducer(
     };
   }),
   on(CartActions.removeProduct, (state, action) => {
+    console.log(action.id);
     let productList = [...state.cart.productList];
     productList = productList.filter((product) => {
       return product.id !== action.id;
